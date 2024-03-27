@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:moedapp/constants/app_theme.dart';
-import 'package:moedapp/currency_converter.dart';
+import 'package:moedapp/src/home_view.dart';
+
+import 'src/constants/app_theme.dart';
 
 final scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
@@ -11,12 +12,16 @@ Future<void> main() async {
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
-  ]).then((_) => runApp(NotificationListener<OverscrollIndicatorNotification>(
-      onNotification: (OverscrollIndicatorNotification overscroll) {
-        overscroll.disallowIndicator();
-        return true;
-      },
-      child: const MyApp())));
+  ]).then(
+    (_) => runApp(
+      NotificationListener<OverscrollIndicatorNotification>(
+          onNotification: (OverscrollIndicatorNotification overscroll) {
+            overscroll.disallowIndicator();
+            return true;
+          },
+          child: const MyApp()),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -33,7 +38,7 @@ class MyApp extends StatelessWidget {
       ),
       scaffoldMessengerKey: scaffoldMessengerKey,
       debugShowCheckedModeBanner: false,
-      home: const CurrencyConverter(),
+      home: const HomeView(),
       initialRoute: "/",
     );
   }
