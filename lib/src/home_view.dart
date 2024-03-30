@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:moedapp/src/constants/app_theme.dart';
+import 'package:moedapp/src/history_view.dart';
 import 'package:moedapp/src/home_bottom_navigation_bar_view.dart';
 import 'package:provider/provider.dart';
+
+Widget getPage(int index) {
+  switch (index) {
+    case 0:
+      return const HomeView();
+    case 1:
+      return const HistoryView();
+    default:
+      return const HomeView();
+  }
+}
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
