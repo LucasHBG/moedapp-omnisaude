@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moedapp/src/constants/app_theme.dart';
+import 'package:moedapp/src/currency_converter_view.dart';
 import 'package:moedapp/src/history_view.dart';
 import 'package:moedapp/src/home_bottom_navigation_bar_view.dart';
 import 'package:provider/provider.dart';
@@ -7,11 +8,11 @@ import 'package:provider/provider.dart';
 Widget getPage(int index) {
   switch (index) {
     case 0:
-      return const HomeView();
+      return const CurrencyConverterView();
     case 1:
       return const HistoryView();
     default:
-      return const HomeView();
+      return const CurrencyConverterView();
   }
 }
 
