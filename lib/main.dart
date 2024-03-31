@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:moedapp/src/home_bottom_navigation_bar_view.dart';
 import 'package:moedapp/src/home_view.dart';
+import 'package:provider/provider.dart';
 
 import 'src/constants/app_theme.dart';
 
@@ -14,12 +16,19 @@ Future<void> main() async {
     DeviceOrientation.portraitDown,
   ]).then(
     (_) => runApp(
-      NotificationListener<OverscrollIndicatorNotification>(
-          onNotification: (OverscrollIndicatorNotification overscroll) {
-            overscroll.disallowIndicator();
-            return true;
-          },
-          child: const MyApp()),
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => NavigationControllerProvider(),
+          ),
+        ],
+        child: NotificationListener<OverscrollIndicatorNotification>(
+            onNotification: (OverscrollIndicatorNotification overscroll) {
+              overscroll.disallowIndicator();
+              return true;
+            },
+            child: const MyApp()),
+      ),
     ),
   );
 }
