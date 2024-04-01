@@ -34,4 +34,21 @@ class CurrencyConverterService {
       throw "Ocorreu um erro desconhecido, entre em contato com o suporte";
     }
   }
+
+  Future<Map<String, dynamic>> getCurrencies() async {
+    try {
+      final response = await _api.get(Uri.parse(ApiRoutes.getCurrencies));
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      } else if (response.statusCode == 404) {
+        throw Exception("URL não encontrada");
+      } else {
+        throw Exception("Erro ao buscar informações");
+      }
+    } on SocketException catch (_) {
+      throw "Sem conexão com a internet, tente novamente mais tarde";
+    } catch (e) {
+      throw "Ocorreu um erro desconhecido, entre em contato com o suporte";
+    }
+  }
 }
