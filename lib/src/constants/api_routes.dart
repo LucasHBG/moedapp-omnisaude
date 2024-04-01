@@ -6,4 +6,6 @@ class ApiRoutes {
   static String getLatestCurrency(
           {String? amount, String? fromCurrency, String? toCurrency}) =>
       '$_baseApiUrl/latest?amount=${amount ?? "10.00"}&&from=${fromCurrency ?? "BRL"}&to=${toCurrency ?? "USD"}';
+
+  static const String getCurrencies = '$_baseApiUrl/currencies';
 }
