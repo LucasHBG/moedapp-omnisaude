@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:moedapp/src/home_bottom_navigation_bar_view.dart';
+import 'package:moedapp/src/currency_provider.dart';
 import 'package:moedapp/src/home_view.dart';
+import 'package:moedapp/src/navigation_controller_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'src/constants/app_theme.dart';
@@ -21,6 +22,7 @@ Future<void> main() async {
           ChangeNotifierProvider(
             create: (context) => NavigationControllerProvider(),
           ),
+          ChangeNotifierProvider(create: (context) => CurrencyProvider()),
         ],
         child: NotificationListener<OverscrollIndicatorNotification>(
             onNotification: (OverscrollIndicatorNotification overscroll) {
